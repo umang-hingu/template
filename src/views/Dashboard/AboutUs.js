@@ -28,6 +28,7 @@ import {
   Th,
   Thead,
   Tr,
+  Input,
 } from "@chakra-ui/react";
 
 // Custom components
@@ -42,13 +43,13 @@ import {
   useJsApiLoader,
   GoogleMap,
   MarkerF,
-  Autocomplete,
+  Autocomplete
 } from "@react-google-maps/api";
 
 const center = { lat: 21.215284608632743, lng: 72.85702453927374 };
 const libraries = ["places"];
 
-function Profile() {
+function AboutUs() {
   const [map, setMap] = useState(null);
   const [position, setPosition] = useState(center);
 
@@ -60,6 +61,7 @@ function Profile() {
   const locationInputRef = useRef();
 
   const addMarker = async () => {
+    
     console.log(locationInputRef.current.value);
 
     const geocoder = new google.maps.Geocoder();
@@ -78,7 +80,9 @@ function Profile() {
       lat: result.results[0].geometry.location.lat(),
       lng: result.results[0].geometry.location.lng(),
     });
+    
   };
+ 
 
   if (!isLoaded) {
     return (
@@ -95,8 +99,32 @@ function Profile() {
     setPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() });
   };
   return (
-    <p>fnvknrjkvn</p>
+    
+    <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+      <Card overflowX={{ sm: "scroll", xl: "hidden" }} pb="0px">
+        <CardHeader p="6px 0px 22px 0px"><Autocomplete onPlaceChanged={addMarker}><Input color='white' ref={locationInputRef}></Input></Autocomplete></CardHeader>
+        <CardBody>
+			
+          <GoogleMap
+            onClick={locationHandler}
+            center={center}
+            zoom={15}
+            mapContainerStyle={{
+              width: "1000px",
+              height: "600px",
+              margin: "2%",
+              
+            }}
+            onLoad={map => setMap(map)}
+          >
+            <MarkerF position={position} />
+          </GoogleMap>
+          
+        
+        </CardBody>
+      </Card>
+    </Flex>
   );
 }
 
-export default Profile;
+export default AboutUs;

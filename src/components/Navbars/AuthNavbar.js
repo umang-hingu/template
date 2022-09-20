@@ -78,14 +78,16 @@ export default function AuthNavbar(props) {
         bg='linear-gradient(97.89deg, #FFFFFF 70.67%, rgba(117, 122, 140, 0) 108.55%)'
         bgClip='text'>
         <Text fontSize='sm' letterSpacing='3px' mt='3px' color='transparent'>
-          {logoText}
+          Welcome to ReactJs App
         </Text>
       </Box>
     </Link>
   );
+  const token = localStorage.getItem('token');
   var linksAuth = (
     <HStack display={{ sm: "none", lg: "flex" }}>
-      <NavLink to='/admin/dashboard'>
+      {token ? (
+        <NavLink to='/admin/dashboard'>
         <Button
           fontSize='sm'
           ms='0px'
@@ -97,9 +99,7 @@ export default function AuthNavbar(props) {
           leftIcon={<HomeIcon color={navbarIcon} w='12px' h='12px' me='0px' />}>
           <Text>Dashboard</Text>
         </Button>
-      </NavLink>
-      <NavLink to='/admin/profile'>
-        <Button
+      </NavLink>): (<Button
           fontSize='sm'
           ms='0px'
           me='0px'
@@ -107,12 +107,11 @@ export default function AuthNavbar(props) {
           me={{ sm: "2px", md: "16px" }}
           color={navbarIcon}
           variant='transparent-with-icon'
-          leftIcon={
-            <PersonIcon color={navbarIcon} w='12px' h='12px' me='0px' />
-          }>
-          <Text>Profile</Text>
-        </Button>
-      </NavLink>
+          leftIcon={<HomeIcon color={navbarIcon} w='12px' h='12px' me='0px' />}>
+          <Text>Dashboard</Text>
+        </Button>)
+      }
+      
       <NavLink to='/auth/signup'>
         <Button
           fontSize='sm'
@@ -177,19 +176,7 @@ export default function AuthNavbar(props) {
           />
         </Box>
         {linksAuth}
-        <Link href='https://creative-tim.com/product/vision-ui-dashboard-chakra'>
-          <Button
-            fontSize='xs'
-            variant='brand'
-            borderRadius='12px'
-            px='30px'
-            display={{
-              sm: "none",
-              lg: "flex",
-            }}>
-            Free Download
-          </Button>
-        </Link>
+      
       </Flex>
     </Flex>
   );

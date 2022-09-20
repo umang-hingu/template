@@ -194,6 +194,7 @@ export const rtlTimelineData = [
   },
 ];
 
+
 export const tablesTableData = [
   {
     logo: avatar1,
