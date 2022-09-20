@@ -1,23 +1,5 @@
-/*!
-
-=========================================================
-* Vision UI Free Chakra - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-chakra
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-chakra/blob/master LICENSE.md)
-
-* Design and Coded by Simmmple & Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
 import React from "react";
-// Chakra imports
+
 import {
   Box,
   Flex,
@@ -36,7 +18,7 @@ import {
 import signInImage from "assets/img/signInImage.png";
 
 // Custom Components
-import AuthFooter from "components/Footer/AuthFooter";
+
 import GradientBorder from "components/GradientBorder/GradientBorder";
 import { useRef } from "react";
 import { useHistory } from "react-router-dom";
@@ -225,7 +207,7 @@ function SignIn() {
           ms={{ base: "auto", lg: "auto" }}
           mb="80px"
         >
-          <AuthFooter />
+          
         </Box>
         <Box
           display={{ base: "none", lg: "block" }}

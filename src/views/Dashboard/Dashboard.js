@@ -1,21 +1,3 @@
-/*!
-
-=========================================================
-* Vision UI Free Chakra - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-chakra
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-chakra/blob/master LICENSE.md)
-
-* Design and Coded by Simmmple & Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
 import React from "react";
 
 // Chakra imports
@@ -23,7 +5,6 @@ import {
   Flex,
   Table,
   Tbody,
-  Icon,
   Text,
   Th,
   Thead,
@@ -46,26 +27,25 @@ import { tablesProjectData, tablesTableData } from "variables/general";
 import { AiFillCheckCircle } from "react-icons/ai";
 import { useState, useEffect } from "react";
 
-
 function Dashboard() {
-	const [loadedData, setLoadedData] = useState([]);
+  const [loadedData, setLoadedData] = useState([]);
 
-	const fetchdata = () => {
-	  fetch("https://reqres.in/api/users?page=2")
-		.then((response) => {
-		  return response.json();
-		})
-		.then((resData) => {
-		  setLoadedData(resData.data);
-		})
-		.catch((error) => {
-		  console.log(error.message);
-		});
-	};
-  
-	useEffect(() => {
-	  fetchdata();
-	}, []);
+  const fetchdata = () => {
+    fetch("https://reqres.in/api/users?page=2")
+      .then((response) => {
+        return response.json();
+      })
+      .then((resData) => {
+        setLoadedData(resData.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
+
+  useEffect(() => {
+    fetchdata();
+  }, []);
 
   return (
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
@@ -102,8 +82,6 @@ function Dashboard() {
                 >
                   Email
                 </Th>
-                
-               
               </Tr>
             </Thead>
             <Tbody>

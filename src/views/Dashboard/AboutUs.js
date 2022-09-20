@@ -1,35 +1,7 @@
-/*!
-
-=========================================================
-* Vision UI Free Chakra - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/vision-ui-free-chakra
-* Copyright 2021 Creative Tim (https://www.creative-tim.com/)
-* Licensed under MIT (https://github.com/creativetimofficial/vision-ui-free-chakra/blob/master LICENSE.md)
-
-* Design and Coded by Simmmple & Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
-
 import React from "react";
 
 // Chakra imports
-import {
-  Flex,
-  Table,
-  Tbody,
-  Icon,
-  Text,
-  Th,
-  Thead,
-  Tr,
-  Input,
-} from "@chakra-ui/react";
+import { Flex, Text, Input } from "@chakra-ui/react";
 
 // Custom components
 import Card from "components/Card/Card.js";
@@ -43,7 +15,7 @@ import {
   useJsApiLoader,
   GoogleMap,
   MarkerF,
-  Autocomplete
+  Autocomplete,
 } from "@react-google-maps/api";
 
 const center = { lat: 21.215284608632743, lng: 72.85702453927374 };
@@ -61,7 +33,6 @@ function AboutUs() {
   const locationInputRef = useRef();
 
   const addMarker = async () => {
-    
     console.log(locationInputRef.current.value);
 
     const geocoder = new google.maps.Geocoder();
@@ -80,9 +51,7 @@ function AboutUs() {
       lat: result.results[0].geometry.location.lat(),
       lng: result.results[0].geometry.location.lng(),
     });
-    
   };
- 
 
   if (!isLoaded) {
     return (
@@ -99,12 +68,14 @@ function AboutUs() {
     setPosition({ lat: e.latLng.lat(), lng: e.latLng.lng() });
   };
   return (
-    
     <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
       <Card overflowX={{ sm: "scroll", xl: "hidden" }} pb="0px">
-        <CardHeader p="6px 0px 22px 0px"><Autocomplete onPlaceChanged={addMarker}><Input color='white' ref={locationInputRef}></Input></Autocomplete></CardHeader>
+        <CardHeader p="6px 0px 22px 0px">
+          <Autocomplete onPlaceChanged={addMarker}>
+            <Input color="white" ref={locationInputRef}></Input>
+          </Autocomplete>
+        </CardHeader>
         <CardBody>
-			
           <GoogleMap
             onClick={locationHandler}
             center={center}
@@ -113,14 +84,11 @@ function AboutUs() {
               width: "1000px",
               height: "600px",
               margin: "2%",
-              
             }}
-            onLoad={map => setMap(map)}
+            onLoad={(map) => setMap(map)}
           >
             <MarkerF position={position} />
           </GoogleMap>
-          
-        
         </CardBody>
       </Card>
     </Flex>
