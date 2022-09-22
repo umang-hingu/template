@@ -1,37 +1,29 @@
-import React from "react";
+import React from 'react';
 
 // Chakra imports
-import {
-  Flex,
-  Table,
-  Tbody,
-  Text,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Flex, Table, Tbody, Text, Th, Thead, Tr } from '@chakra-ui/react';
 
 // Custom components
-import Card from "components/Card/Card.js";
-import CardHeader from "components/Card/CardHeader.js";
-import CardBody from "components/Card/CardBody.js";
+import Card from 'components/Card/Card.js';
+import CardHeader from 'components/Card/CardHeader.js';
+import CardBody from 'components/Card/CardBody.js';
 
 // Table Components
-import TablesProjectRow from "components/Tables/TablesProjectRow";
-import TablesTableRow from "components/Tables/TablesTableRow";
+import TablesProjectRow from 'components/Tables/TablesProjectRow';
+import TablesTableRow from 'components/Tables/TablesTableRow';
 
 // Data
-import { tablesProjectData, tablesTableData } from "variables/general";
+import { tablesProjectData, tablesTableData } from 'variables/general';
 
 // Icons
-import { AiFillCheckCircle } from "react-icons/ai";
-import { useState, useEffect } from "react";
+import { AiFillCheckCircle } from 'react-icons/ai';
+import { useState, useEffect } from 'react';
 
 function Dashboard() {
   const [loadedData, setLoadedData] = useState([]);
 
   const fetchdata = () => {
-    fetch("https://reqres.in/api/users?page=2")
+    fetch('https://reqres.in/api/users?page=2')
       .then((response) => {
         return response.json();
       })
@@ -48,9 +40,9 @@ function Dashboard() {
   }, []);
 
   return (
-    <Flex direction="column" pt={{ base: "120px", md: "75px" }}>
+    <Flex direction="column" pt={{ base: '120px', md: '75px' }}>
       {/* Authors Table */}
-      <Card overflowX={{ sm: "scroll", xl: "hidden" }} pb="0px">
+      <Card overflowX={{ sm: 'scroll', xl: 'hidden' }} pb="0px">
         <CardHeader p="6px 0px 22px 0px">
           <Text fontSize="lg" color="#fff" fontWeight="bold">
             Fetched Data from server
@@ -64,22 +56,13 @@ function Dashboard() {
                   ps="0px"
                   color="gray.400"
                   fontFamily="Plus Jakarta Display"
-                  borderBottomColor="#56577A"
-                >
+                  borderBottomColor="#56577A">
                   First Name
                 </Th>
-                <Th
-                  color="gray.400"
-                  fontFamily="Plus Jakarta Display"
-                  borderBottomColor="#56577A"
-                >
+                <Th color="gray.400" fontFamily="Plus Jakarta Display" borderBottomColor="#56577A">
                   Last Name
                 </Th>
-                <Th
-                  color="gray.400"
-                  fontFamily="Plus Jakarta Display"
-                  borderBottomColor="#56577A"
-                >
+                <Th color="gray.400" fontFamily="Plus Jakarta Display" borderBottomColor="#56577A">
                   Email
                 </Th>
               </Tr>

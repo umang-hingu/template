@@ -1,24 +1,24 @@
 // chakra imports
-import { Box, ChakraProvider, Portal } from "@chakra-ui/react";
+import { Box, ChakraProvider, Portal } from '@chakra-ui/react';
 
 // core components
-import AuthNavbar from "components/Navbars/AuthNavbar.js";
-import React from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
-import routes from "routes.js";
-import theme from "theme/themeAuth.js";
+import AuthNavbar from 'components/Navbars/AuthNavbar.js';
+import React from 'react';
+import { Redirect, Route, Switch } from 'react-router-dom';
+import routes from 'routes.js';
+import theme from 'theme/themeAuth.js';
 
 export default function Pages(props) {
   const { ...rest } = props;
   // ref for the wrapper div
   const wrapper = React.createRef();
   React.useEffect(() => {
-    document.body.style.overflow = "unset";
+    document.body.style.overflow = 'unset';
     // Specify how to clean up after this effect:
     return function cleanup() {};
   });
   const getActiveRoute = (routes) => {
-    let activeRoute = "Default Brand Text";
+    let activeRoute = 'Default Brand Text';
     for (let i = 0; i < routes.length; i++) {
       if (routes[i].collapse) {
         let collapseActiveRoute = getActiveRoute(routes[i].views);
@@ -31,9 +31,7 @@ export default function Pages(props) {
           return categoryActiveRoute;
         }
       } else {
-        if (
-          window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
-        ) {
+        if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
           return routes[i].name;
         }
       }
@@ -49,9 +47,7 @@ export default function Pages(props) {
           return categoryActiveNavbar;
         }
       } else {
-        if (
-          window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1
-        ) {
+        if (window.location.href.indexOf(routes[i].layout + routes[i].path) !== -1) {
           if (routes[i].secondaryNavbar) {
             return routes[i].secondaryNavbar;
           }
@@ -65,32 +61,23 @@ export default function Pages(props) {
       if (prop.collapse) {
         return getRoutes(prop.views);
       }
-      if (prop.category === "account") {
+      if (prop.category === 'account') {
         return getRoutes(prop.views);
       }
-      if (prop.layout === "/auth") {
-        return (
-          <Route
-            path={prop.layout + prop.path}
-            component={prop.component}
-            key={key}
-          />
-        );
+      if (prop.layout === '/auth') {
+        return <Route path={prop.layout + prop.path} component={prop.component} key={key} />;
       } else {
         return null;
       }
     });
   };
   const navRef = React.useRef();
-  document.documentElement.dir = "ltr";
+  document.documentElement.dir = 'ltr';
   return (
     <ChakraProvider theme={theme} resetCss={false} w="100%">
       <Box ref={navRef} w="100%">
         <Portal containerRef={navRef}>
-          <AuthNavbar
-            secondary={getActiveNavbar(routes)}
-            logoText="VISION UI FREE"
-          />
+          <AuthNavbar secondary={getActiveNavbar(routes)} logoText="VISION UI FREE" />
         </Portal>
         <Box w="100%">
           <Box ref={wrapper} w="100%">
