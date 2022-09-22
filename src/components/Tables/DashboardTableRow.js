@@ -52,6 +52,7 @@ function DashboardTableRow(props) {
           {members.map((member) => {
             return (
               <Avatar
+                key={math.Random()}
                 name="Ryan Florence"
                 src={member}
                 showBorder={false}
